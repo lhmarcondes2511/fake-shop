@@ -49,12 +49,16 @@ spec:
       app: fakeshop
   template:
     metadata:
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '5000'
+        prometheus.io/path: '/metrics'
       labels: 
         app: fakeshop
     spec: 
       containers:
         - name: fakeshop
-          image: marlonbastida/fake-shop:v1
+          image: lhmarcondes/fake-shop
           ports:
             - containerPort: 5000
           env:
